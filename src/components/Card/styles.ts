@@ -1,10 +1,20 @@
 
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export const CardContainer = styled.div`
+interface CardContainerProps {
+  resetPadding: boolean
+}
+
+export const CardContainer = styled.div<CardContainerProps>`
   width: 100%;
-  padding: 2rem 2rem 0.5rem;
+  padding: 2rem;
   border-radius: 8px;
   background: ${props => props.theme.white};
   border: 1px solid ${props => props.theme.divider};
+
+
+  ${(props) => props.resetPadding && css`
+    padding: unset;
+  `
+  };
 `

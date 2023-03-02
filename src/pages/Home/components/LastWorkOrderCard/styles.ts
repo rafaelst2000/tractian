@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import * as Checkbox from '@radix-ui/react-checkbox';
 
-export const LastAssetCardContainer = styled.div`
+export const LastWorkOrderCardContainer = styled.div`
 
   .title-section {
     display: flex;
@@ -20,6 +20,13 @@ export const LastAssetCardContainer = styled.div`
       color: ${props => props.theme.blue};
       cursor: pointer;
     }
+  }
+
+  .description-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
   }
 `
 
@@ -62,6 +69,24 @@ export const StyledCheckbox = styled(Checkbox.Root)`
   ${(props) => props.checked && css`
     box-shadow: inset 0 0 0 2px ${props => props.theme['blue']};;
     background-color: ${props => props.theme['blue']};
+  `
+  }
+`
+
+interface PriorityProps { 
+  status: 'high' | 'medium' | 'low'
+}
+
+export const Priority = styled.strong<PriorityProps>`
+  text-transform: uppercase;
+  color: ${(props) => props.theme['white']};
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+
+  ${props => props.status === 'high' && css`
+    background-color: ${props => props.theme['red']};
   `
   }
 `

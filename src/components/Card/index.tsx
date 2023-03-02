@@ -4,11 +4,12 @@ import { CardContainer } from './styles'
 
 interface CardProps {
   children: ReactNode
+  resetPadding?: boolean
 }
 
-export function Card({ children }: CardProps) {
+export function Card({ children, resetPadding = false }: CardProps) {
   return(
-    <CardContainer>
+    <CardContainer resetPadding={resetPadding}>
       {children}
     </CardContainer>
   )

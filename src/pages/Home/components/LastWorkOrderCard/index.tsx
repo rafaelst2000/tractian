@@ -1,10 +1,10 @@
 import { Card } from "../../../../components/Card";
 import { useState } from 'react'
-import { LastAssetCardContainer, Task, StyledCheckbox } from "./styles";
+import { LastWorkOrderCardContainer, Task, StyledCheckbox, Priority } from "./styles";
 import { Check } from 'phosphor-react'
 import * as Checkbox from '@radix-ui/react-checkbox';
 
-const asset = {
+const workOrder = {
   "assetId": 5,
   "assignedUserIds": [
     1,
@@ -32,20 +32,23 @@ const asset = {
   "title": "Repair Fan D21"
 }
 
-export function LastAssetCard() {
-  const [lastAsset, setLastAsset] = useState(asset) as any
+export function LastWorkOrderCard() {
+  const [lastWorkOrder, setLastWorkOrder] = useState(workOrder) as any
 
   return (
     <Card>
-      <LastAssetCardContainer>
+      <LastWorkOrderCardContainer>
         <div className="title-section">
           <h4>Últimas tarefas</h4>
           <span>Ver todas</span>
         </div>
-        <p>{lastAsset.description}</p>
+        <div className="description-section">
+          <p>{lastWorkOrder.description}</p>
+          <Priority status={lastWorkOrder.priority}>{lastWorkOrder.priority}</Priority>
+        </div>
 
         <Task>
-          {lastAsset.checklist.map((checkList: any) => {
+          {lastWorkOrder.checklist.map((checkList: any) => {
             return (
               <div className="checkbox-section" key={checkList.task}>
                 <StyledCheckbox checked={checkList.completed} >
@@ -58,7 +61,7 @@ export function LastAssetCard() {
             )
           })}
         </Task>
-      </LastAssetCardContainer>
+      </LastWorkOrderCardContainer>
     </Card>
   )
 }
