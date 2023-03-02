@@ -4,6 +4,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 2.5rem;
 
   & h1 {
     color: ${props => props.theme['black']};
