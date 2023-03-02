@@ -7,12 +7,14 @@ export const defaultTheme = {
   'gray-dark': '#4a4f6b',
   bg: '#F7F8FC',
   'side-bg': '#363740',
+  'side-menu-item': '#A4A6B3',
+  'side-menu-item-active': '#3f4049',
 
   divider: '#DFE0EB',
   'divider-graph': '#EBEDF0',
   
   blue: '#3751FF',
-  'light-blue': '##DDE2FF',
+  'light-blue': '#DDE2FF',
   green: '#29CC97',
   yellow: '#FEC400',
   red: '#F12B2C',
