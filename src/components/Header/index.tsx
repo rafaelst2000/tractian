@@ -1,42 +1,19 @@
-import { HeaderContainer, NavItem, Separator } from "./styles";
-import { HouseLine, Briefcase, Gear, Lightbulb, Users } from 'phosphor-react'
-
-import logo from '../../assets/logo.png'
-
+import { HeaderContainer, Separator,Profile } from "./styles";
+import { MagnifyingGlass, Bell } from 'phosphor-react'
 
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={logo} />
-
-      <ul>
-        <NavItem to={'/'}>
-          <HouseLine size={16}/>
-          Home
-        </NavItem>
-
-        <NavItem to={'/teste'}>
-          <Lightbulb size={16}/>
-          Unidades
-        </NavItem>
-
-        <NavItem to={'/teste'}>
-          <Users size={16}/>
-          Usuários
-        </NavItem>
-
-        <NavItem to={'/teste'}>
-          <Briefcase size={16}/>
-          Empresas
-        </NavItem>
-
+      <h1>Home</h1>
+      <div>
+        <MagnifyingGlass size={24} />
+        <Bell size={24} />
         <Separator />
-
-        <NavItem to={'/teste'}>
-          <Gear size={16}/>
-          Configurações
-        </NavItem>
-      </ul>
+        <h3>Rafael Trevisan</h3>
+        <Profile>
+          <img src="https://avatars.githubusercontent.com/u/57990932?v=4" />
+        </Profile>
+      </div>
     </HeaderContainer>
   )
 }

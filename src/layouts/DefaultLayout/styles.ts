@@ -6,3 +6,7 @@ export const LayoutContainer = styled.div`
   display: grid;
   grid-template-columns: 16rem 1fr;
 `
+
+export const BaseContainer = styled.div`
+  padding: 2rem;
+`

@@ -1,7 +1,7 @@
 import { NavLink  } from "react-router-dom";
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const SideMenuContainer = styled.header`
   background: ${props => props.theme['side-bg']};
 
   img {
