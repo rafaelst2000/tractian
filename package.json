@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.2",
+    "antd": "^5.2.3",
     "highcharts": "^10.3.3",
     "highcharts-react-official": "^3.2.0",
     "phosphor-react": "^1.4.1",

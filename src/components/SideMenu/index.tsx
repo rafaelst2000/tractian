@@ -15,24 +15,24 @@ export function SideMenu() {
           Home
         </NavItem>
 
-        <NavItem to={'/teste'}>
+        <NavItem to={'/units'}>
           <Lightbulb size={16}/>
           Unidades
         </NavItem>
 
-        <NavItem to={'/teste'}>
+        <NavItem to={'/users'}>
           <Users size={16}/>
           Usuários
         </NavItem>
 
-        <NavItem to={'/teste'}>
+        <NavItem to={'/companies'}>
           <Briefcase size={16}/>
           Empresas
         </NavItem>
 
         <Separator />
 
-        <NavItem to={'/teste'}>
+        <NavItem to={'/configs'}>
           <Gear size={16}/>
           Configurações
         </NavItem>

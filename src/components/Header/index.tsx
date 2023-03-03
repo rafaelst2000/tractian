@@ -1,10 +1,16 @@
 import { HeaderContainer, Separator,Profile } from "./styles";
 import { MagnifyingGlass, Bell } from 'phosphor-react'
+import { useLocation } from 'react-router-dom'
 
 export function Header() {
+  const routeNames = {
+    '/': 'Home',
+    '/units': "Unidades"
+  }
+  const location = useLocation();
   return (
     <HeaderContainer>
-      <h1>Home</h1>
+      <h1>{routeNames[location.pathname]}</h1>
       <div>
         <MagnifyingGlass size={24} />
         <Bell size={24} />
