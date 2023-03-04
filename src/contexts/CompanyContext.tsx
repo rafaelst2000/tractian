@@ -1,10 +1,11 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { Company } from "../@types";
 
-
 interface CompanyContextType {
   companies: Company[]
   getCompanyNameById: (companyId: number) => string
+  editCompany: (company: Company) => void
+  deleteCompany: (companyId: number) => void
 }
 
 interface CompanyProviderProps {
@@ -25,6 +26,27 @@ export function CompanyContextProvider({ children }: CompanyProviderProps) {
     setCompanies(data)
   }
 
+  async function editCompany(company: Company) {
+    const response = await fetch(`${baseUrl}/companies/${company.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(company)
+    })
+    await response.json()
+  }
+
+  async function deleteCompany(companyId: number) {
+    const response = await fetch(`${baseUrl}/companies/${companyId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+    })
+    await response.json()
+  }
+
   function getCompanyNameById(id: number) { 
     const index = companies.findIndex(company => company.id === id)
     if(index < 0) return ''
@@ -36,7 +58,7 @@ export function CompanyContextProvider({ children }: CompanyProviderProps) {
   }, [])
 
   return (
-    <CompanyContext.Provider value={{ companies, getCompanyNameById }}>
+    <CompanyContext.Provider value={{ companies, getCompanyNameById, editCompany, deleteCompany }}>
       {children}
     </CompanyContext.Provider>
   )

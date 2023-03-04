@@ -5,7 +5,9 @@ import { useLocation } from 'react-router-dom'
 export function Header() {
   const routeNames = {
     '/': 'Home',
-    '/units': "Unidades"
+    '/units': "Unidades",
+    '/users': "Usuários",
+    '/companies': "Empresas",
   }
   const location = useLocation();
   return (
