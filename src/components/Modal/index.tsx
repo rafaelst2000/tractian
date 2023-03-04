@@ -5,19 +5,18 @@ import { useTheme } from 'styled-components';
 
 interface ModalProps{
   title: string
-  selectedId: number
   children: ReactNode
-  onOpenModal: (selectedId: number) => void
+  onOpenModal: () => void
   onConfirm: () => void
 }
 
-export function Modal({ title, children, onOpenModal, selectedId, onConfirm }: ModalProps) {
+export function Modal({ title, children, onOpenModal, onConfirm }: ModalProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const theme = useTheme()
 
   function openModal() {
     setModalOpen(true)
-    onOpenModal(selectedId)
+    onOpenModal()
   }
 
   function handleConfirm() {

@@ -6,6 +6,7 @@ interface UnitContextType {
   units: Unit[]
   editUnit: (unit: Unit) => void
   deleteUnit: (unitId: number) => void
+  getUnitNameById: (unitId: number) => void
 }
 
 interface UnitProviderProps {
@@ -47,13 +48,18 @@ export function UnitContextProvider({ children }: UnitProviderProps) {
     await response.json()
   }
 
+  function getUnitNameById(id: number) { 
+    const index = units.findIndex(unit => unit.id === id)
+    if(index < 0) return ''
+    return units[index].name
+  }
 
   useEffect(() => {
     loadUnits()
   }, [])
 
   return (
-    <UnitContext.Provider value={{ units, editUnit, deleteUnit }}>
+    <UnitContext.Provider value={{ units, editUnit, deleteUnit, getUnitNameById }}>
       {children}
     </UnitContext.Provider>
   )

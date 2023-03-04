@@ -26,8 +26,9 @@ export function CompanyContextProvider({ children }: CompanyProviderProps) {
   }
 
   function getCompanyNameById(id: number) { 
-    const company = companies.findIndex(company => company.id === id)
-    return companies[company].name
+    const index = companies.findIndex(company => company.id === id)
+    if(index < 0) return ''
+    return companies[index].name
   }
  
   useEffect(() => {

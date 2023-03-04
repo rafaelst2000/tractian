@@ -76,7 +76,7 @@ export function Units() {
           key="action"
           render={(_: any, record: UnitTableData) => (
             <div>
-              <Modal title="Editar usuário" onOpenModal={onOpenModal} selectedId={record.key} onConfirm={editSelectedUnit}>
+              <Modal title="Editar unidade" onOpenModal={() => onOpenModal(record.key)} onConfirm={editSelectedUnit}>
                 <Input size="large" placeholder="Nome" value={selectedUnit.unit} onChange={handleChangeSelectedUnit}/>
               </Modal>
               <Confirm title={`Excluir unidade ${record.unit}`} onConfirm={() => deleteSelectedUnit(record)}/>
