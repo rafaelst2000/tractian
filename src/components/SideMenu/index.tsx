@@ -32,7 +32,7 @@ export function SideMenu() {
 
         <Separator />
 
-        <NavItem to={'/configs'}>
+        <NavItem to={'/configs'} style={{pointerEvents: "none"}}>
           <Gear size={16}/>
           Configurações
         </NavItem>
