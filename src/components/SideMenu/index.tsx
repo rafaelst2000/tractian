@@ -1,5 +1,5 @@
 import { SideMenuContainer, NavItem, Separator } from "./styles";
-import { HouseLine, Briefcase, Gear, Lightbulb, Users } from 'phosphor-react'
+import { HouseLine, Briefcase, Gear, Lightbulb, Users, ListChecks, Nut } from 'phosphor-react'
 
 import logo from '../../assets/logo.png'
 
@@ -28,6 +28,16 @@ export function SideMenu() {
         <NavItem to={'/companies'}>
           <Briefcase size={16}/>
           Empresas
+        </NavItem>
+
+        <NavItem to={'/assets'}>
+          <Nut size={16}/>
+          Ativos
+        </NavItem>
+
+        <NavItem to={'/workorders'}>
+          <ListChecks size={16}/>
+          Ordens de serviço
         </NavItem>
 
         <Separator />

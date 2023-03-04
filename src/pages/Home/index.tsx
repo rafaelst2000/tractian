@@ -1,5 +1,5 @@
 import { Card } from "../../components/Card";
-import { LastWorkOrderCard } from "./components/LastWorkOrderCard";
+import { WorkOrderCard } from "../../components/WorkOrderCard";
 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
@@ -9,14 +9,18 @@ import { LastAssetsCard } from "./components/LastAssetsCard";
 import { useAsset } from "../../hooks/useAsset";
 import { useCompany } from "../../hooks/useCompany";
 import { useUnit } from "../../hooks/useUnit";
-import { useUser } from "../../hooks/useuser";
+import { useUser } from "../../hooks/useUser";
+import { useWorkorder } from "../../hooks/useWorkorder";
 
 export function Home() {
   const { assets, assetsTempAverage, assetsHealthScoreAverage, assetsUptimeAverage, assetsCollectsAverage, getCollectAverageByAsset } = useAsset()
   const { companies } = useCompany()
   const { units } = useUnit()
   const { users } = useUser()
-
+  const { workorders } = useWorkorder()
+  
+  const filteredWorkordersDesc = workorders.sort((a, b) => b.id - a.id)
+  const lastWorkorder = filteredWorkordersDesc.slice(1)[0]
 
   const resumeCards = [
     {
@@ -113,7 +117,7 @@ export function Home() {
       
       <div className="info-cards">
         <LastAssetsCard />
-        <LastWorkOrderCard />
+        <WorkOrderCard isLastWorkOrder workorder={lastWorkorder}/>
       </div>
     </HomeContainer>
   )

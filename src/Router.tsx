@@ -5,6 +5,7 @@ import { Home } from './pages/Home'
 import { Units } from './pages/Units'
 import { Companies } from './pages/Companies'
 import { Users } from './pages/Users'
+import { Workorders } from './pages/Workorders'
 
 export function Router() {
   return (
@@ -14,6 +15,7 @@ export function Router() {
         <Route path="/units" element={<Units />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/workorders" element={<Workorders />} />
       </Route>
     </Routes>
   )

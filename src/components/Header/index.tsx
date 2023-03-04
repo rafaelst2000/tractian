@@ -4,10 +4,12 @@ import { useLocation } from 'react-router-dom'
 
 export function Header() {
   const routeNames = {
-    '/': 'Home',
+    '/': "Home",
     '/units': "Unidades",
     '/users': "Usuários",
     '/companies': "Empresas",
+    '/workorders': "Ordens de serviço",
+    '/assets': "Ativos"
   }
   const location = useLocation();
   return (
