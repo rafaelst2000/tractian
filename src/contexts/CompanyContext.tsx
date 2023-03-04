@@ -4,6 +4,7 @@ import { Company } from "../@types";
 
 interface CompanyContextType {
   companies: Company[]
+  getCompanyNameById: (companyId: number) => string
 }
 
 interface CompanyProviderProps {
@@ -23,13 +24,18 @@ export function CompanyContextProvider({ children }: CompanyProviderProps) {
 
     setCompanies(data)
   }
+
+  function getCompanyNameById(id: number) { 
+    const company = companies.findIndex(company => company.id === id)
+    return companies[company].name
+  }
  
   useEffect(() => {
     loadCompanies()
   }, [])
 
   return (
-    <CompanyContext.Provider value={{ companies }}>
+    <CompanyContext.Provider value={{ companies, getCompanyNameById }}>
       {children}
     </CompanyContext.Provider>
   )

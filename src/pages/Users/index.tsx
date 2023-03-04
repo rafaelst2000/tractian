@@ -22,7 +22,7 @@ export function Users() {
         <Table.Column title="Empresa" dataIndex="company" key="company" />
         <Table.Column title="Unidade" dataIndex="unit" key="unit" />
         <Table.Column
-          width={'5%'}
+          width={'80px'}
           fixed="right"
           title=""
           key="action"

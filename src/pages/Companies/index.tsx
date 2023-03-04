@@ -14,9 +14,9 @@ export function Companies() {
   return(
     <CompaniesContainer>
       <Table dataSource={dataSource}>
-        <Table.Column title="Company" dataIndex="company" key="company" width={'95%'} />
+        <Table.Column title="Company" dataIndex="company" key="company" />
         <Table.Column
-          width={'5%'}
+          width={'80px'}
           fixed="right"
           title=""
           key="action"

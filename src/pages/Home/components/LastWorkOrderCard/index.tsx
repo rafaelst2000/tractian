@@ -41,6 +41,7 @@ export function LastWorkOrderCard() {
 
   return (
     <Card>
+      {lastWorkorder &&
       <LastWorkOrderCardContainer>
         <div className="title-section">
           <h4>Última ordem de serviço</h4>
@@ -65,7 +66,7 @@ export function LastWorkOrderCard() {
             )
           })}
         </Task>
-      </LastWorkOrderCardContainer>
+      </LastWorkOrderCardContainer>}
     </Card>
   )
 }

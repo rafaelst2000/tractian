@@ -4,6 +4,8 @@ import { Unit } from "../@types";
 
 interface UnitContextType {
   units: Unit[]
+  editUnit: (unit: Unit) => void
+  deleteUnit: (unitId: number) => void
 }
 
 interface UnitProviderProps {
@@ -24,12 +26,34 @@ export function UnitContextProvider({ children }: UnitProviderProps) {
     setUnits(data)
   }
 
+  async function editUnit(unit: Unit) {
+    const response = await fetch(`${baseUrl}/units/${unit.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(unit)
+    })
+    await response.json()
+  }
+
+  async function deleteUnit(unitId: number) {
+    const response = await fetch(`${baseUrl}/units/${unitId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+    })
+    await response.json()
+  }
+
+
   useEffect(() => {
     loadUnits()
   }, [])
 
   return (
-    <UnitContext.Provider value={{ units }}>
+    <UnitContext.Provider value={{ units, editUnit, deleteUnit }}>
       {children}
     </UnitContext.Provider>
   )
