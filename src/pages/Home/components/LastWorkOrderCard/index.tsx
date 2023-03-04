@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { LastWorkOrderCardContainer, Task, StyledCheckbox, Priority } from "./styles";
 import { Check } from 'phosphor-react'
 import * as Checkbox from '@radix-ui/react-checkbox';
+import { useWorkorder } from "../../../../hooks/useWorkorder";
 
 const workOrder = {
   "assetId": 5,
@@ -33,22 +34,25 @@ const workOrder = {
 }
 
 export function LastWorkOrderCard() {
-  const [lastWorkOrder, setLastWorkOrder] = useState(workOrder) as any
+  const { workorders } = useWorkorder()
+  
+  const filteredWorkordersDesc = workorders.sort((a, b) => b.id - a.id)
+  const lastWorkorder = filteredWorkordersDesc.slice(1)[0]
 
   return (
     <Card>
       <LastWorkOrderCardContainer>
         <div className="title-section">
-          <h4>Últimas tarefas</h4>
+          <h4>Última ordem de serviço</h4>
           <span>Ver todas</span>
         </div>
         <div className="description-section">
-          <p>{lastWorkOrder.description}</p>
-          <Priority status={lastWorkOrder.priority}>{lastWorkOrder.priority}</Priority>
+          <p>{lastWorkorder.title}</p>
+          <Priority status={lastWorkorder.priority}>{lastWorkorder.priority}</Priority>
         </div>
 
         <Task>
-          {lastWorkOrder.checklist.map((checkList: any) => {
+          {lastWorkorder.checklist.map((checkList: any) => {
             return (
               <div className="checkbox-section" key={checkList.task}>
                 <StyledCheckbox checked={checkList.completed} >

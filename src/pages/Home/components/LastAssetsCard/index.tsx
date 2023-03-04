@@ -1,29 +1,13 @@
 import { Card } from "../../../../components/Card";
+import { useAsset } from "../../../../hooks/useAsset";
 import { LastAssetsCardContainer, Task } from "./styles";
 
-const assets = [
-  {
-    id: 6,
-    name: 'Fan D22',
-    sensor: 'MOE1378',
-    img: 'https://tractian-img.s3.amazonaws.com/2f7eb04cfa255ab00088534f7d51f6f4.jpeg'
-  },
-  {
-    id: 5,
-    name: 'Fan D22',
-    sensor: 'MOE1378',
-    img: 'https://tractian-img.s3.amazonaws.com/2f7eb04cfa255ab00088534f7d51f6f4.jpeg'
-  },
-  {
-    id: 4,
-    name: 'Fan D22',
-    sensor: 'MOE1378',
-    img: 'https://tractian-img.s3.amazonaws.com/2f7eb04cfa255ab00088534f7d51f6f4.jpeg'
-  },
-
-]
-
 export function LastAssetsCard() {
+  const { assets } = useAsset()
+  
+  const filteredAssetsDesc = assets.sort((a, b) => b.id - a.id)
+  const lastThreeAssets = filteredAssetsDesc.slice(3)
+
   return (
     <Card>
       <LastAssetsCardContainer>
@@ -36,14 +20,14 @@ export function LastAssetsCard() {
         </div>
 
         <Task>
-          {assets.map((asset: any) => {
+          {lastThreeAssets.map((asset) => {
             return (
               <div className="asset-section" key={asset.id}>
                 <div>
-                  <img src={asset.img} />
+                  <img src={asset.image} />
                   <p>{asset.name}</p>
                 </div>
-                <span>{asset.sensor}</span>
+                <span>{asset.sensors[0]}</span>
               </div>
             )
           })}

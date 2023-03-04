@@ -6,70 +6,80 @@ import HighchartsReact from 'highcharts-react-official';
 
 import { HomeContainer } from "./styles";
 import { LastAssetsCard } from "./components/LastAssetsCard";
-
-
-const resumeCards = [
-  {
-    info: 'Ativos',
-    quantity: 6,
-  },
-  {
-    info: 'Empresas',
-    quantity: 2,
-  },
-  {
-    info: 'Unidades',
-    quantity: 3,
-  },
-  {
-    info: 'Usuários',
-    quantity: 4,
-  }
-]
-
-const chartCards = [
-  {
-    info: 'Média de temperatura',
-    quantity: 6,
-  },
-  {
-    info: 'Média de saúde',
-    quantity: 2,
-  },
-  {
-    info: 'Média de tempo ligado',
-    quantity: 4,
-  },
-  {
-    info: 'Média de coletas',
-    quantity: 4,
-  },
-  {
-    info: 'Média de coletas/s',
-    quantity: 3,
-  },
-]
-
-const options = {
-  chart: {
-    type: 'spline'
-  },
-  title: {
-    text: 'Média de coletas/segundo'
-  },
-  xAxis: {
-    categories: ['Motor H13D-1', 'Motor H12D-1', 'Motor H12D-3']
-  },
-  series: [{
-    type: 'column',
-    name: 'Tempo (segundos)',
-    colorByPoint: true,
-    data: [5412, 4977, 4730],
-    showInLegend: false
-  }]
-}
+import { useAsset } from "../../hooks/useAsset";
+import { useCompany } from "../../hooks/useCompany";
+import { useUnit } from "../../hooks/useUnit";
+import { useUser } from "../../hooks/useuser";
 
 export function Home() {
+  const { assets, assetsTempAverage, assetsHealthScoreAverage, assetsUptimeAverage, assetsCollectsAverage, getCollectAverageByAsset } = useAsset()
+  const { companies } = useCompany()
+  const { units } = useUnit()
+  const { users } = useUser()
+
+
+  const resumeCards = [
+    {
+      info: 'Ativos',
+      quantity: assets.length
+    },
+    {
+      info: 'Empresas',
+      quantity: companies.length,
+    },
+    {
+      info: 'Unidades',
+      quantity: units.length,
+    },
+    {
+      info: 'Usuários',
+      quantity: users.length,
+    }
+  ]
+  
+  const chartCards = [
+    {
+      info: 'Média de temperatura',
+      quantity: `${assetsTempAverage}ºC`,
+    },
+    {
+      info: 'Média de saúde',
+      quantity: `${assetsHealthScoreAverage}%`,
+    },
+    {
+      info: 'Média de tempo em funcionamento',
+      quantity: `${assetsUptimeAverage}`,
+    },
+    {
+      info: 'Média de coletas',
+      quantity: assetsCollectsAverage,
+    },
+    {
+      info: 'Média de coletas / tempo',
+      quantity: (assetsCollectsAverage / assetsUptimeAverage).toFixed(2),
+    },
+  ]
+
+  const chartOptions = {
+    chart: {
+      type: 'spline'
+    },
+    title: {
+      text: 'Coleta x Tempo'
+    },
+    xAxis: {
+      categories: assets.map(asset => asset.name)
+    },
+    series: [{
+      type: 'column',
+      name: 'Coleta x Tempo',
+      colorByPoint: true,
+      data: assets.map(asset => getCollectAverageByAsset(asset)),
+      showInLegend: false
+    }]
+  }
+
+
   return (
     <HomeContainer>
       <div className="resume-cards">
@@ -86,7 +96,7 @@ export function Home() {
       <Card resetPadding>
         <div className="chart-container">
           <div className="chart">
-            <HighchartsReact highcharts={Highcharts} options={options} />
+            <HighchartsReact highcharts={Highcharts} options={chartOptions} />
           </div>
           <div>
             {chartCards.map(card => {

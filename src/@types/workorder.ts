@@ -6,7 +6,7 @@ type WorkorderChecklist = {
 export interface Workorder {
   id: number
   assetId: number
-  checklist: WorkorderChecklist
+  checklist: WorkorderChecklist[]
   description: string
   priority: 'high' | 'low' | 'medium'
   status: string
