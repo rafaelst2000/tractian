@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -7,12 +7,12 @@ export const HeaderContainer = styled.header`
   padding-bottom: 2.5rem;
 
   & h1 {
-    color: ${props => props.theme['black']};
+    color: ${(props) => props.theme.black};
     font-size: 1.5rem;
   }
-  
+
   & h3 {
-    color: ${props => props.theme['black']};
+    color: ${(props) => props.theme.black};
     font-size: 0.875rem;
     font-weight: 600;
     margin-left: 2rem;
@@ -32,13 +32,13 @@ export const HeaderContainer = styled.header`
 export const Separator = styled.header`
   height: 100%;
   width: 1px;
-  background: ${props => props.theme['divider']};
+  background: ${(props) => props.theme.divider};
 `
 
 export const Profile = styled.div`
   width: 3rem;
   height: 3rem;
-  border: 1.5px solid ${props => props.theme['divider']};
+  border: 1.5px solid ${(props) => props.theme.divider};
   border-radius: 100%;
   padding: 3px;
 
@@ -46,6 +46,5 @@ export const Profile = styled.div`
     display: block;
     width: 100%;
     border-radius: 100%;
-    
   }
 `

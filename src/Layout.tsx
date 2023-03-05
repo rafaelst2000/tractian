@@ -14,7 +14,7 @@ export function LayoutApp() {
     <ThemeProvider theme={defaultTheme}>
       <ConfigProvider locale={ptBR}>
         <BrowserRouter>
-          <GlobalStyle /> 
+          <GlobalStyle />
 
           <Router />
         </BrowserRouter>

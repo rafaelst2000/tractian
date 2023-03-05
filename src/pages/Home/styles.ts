@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   .resume-cards {
@@ -11,14 +11,14 @@ export const HomeContainer = styled.main`
     & p {
       text-align: center;
       font-weight: bold;
-      color: ${props => props.theme['gray']};
+      color: ${(props) => props.theme.gray};
       font-size: 1.125rem;
     }
 
     & strong {
       display: block;
       text-align: center;
-      color: ${props => props.theme['black']};
+      color: ${(props) => props.theme.black};
       font-size: 2.5rem;
     }
   }
@@ -39,29 +39,28 @@ export const HomeContainer = styled.main`
     .chart {
       padding: 2rem;
     }
-    
+
     .chart-container-card {
       padding: 1.5rem 0;
-      border-left: 1px solid ${props => props.theme['divider']};
+      border-left: 1px solid ${(props) => props.theme.divider};
       & p {
         text-align: center;
         font-weight: 600;
-        color: ${props => props.theme['gray']};
+        color: ${(props) => props.theme.gray};
         font-size: 1rem;
       }
-  
+
       & strong {
         display: block;
         text-align: center;
-        color: ${props => props.theme['black']};
+        color: ${(props) => props.theme.black};
         font-size: 1.5rem;
         margin: 0.5rem;
       }
     }
 
     .chart-container-card:not(:last-child) {
-      border-bottom: 1px solid ${props => props.theme['divider']};
+      border-bottom: 1px solid ${(props) => props.theme.divider};
     }
-
   }
 `

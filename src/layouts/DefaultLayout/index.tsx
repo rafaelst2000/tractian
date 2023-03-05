@@ -15,11 +15,18 @@ export function DefaultLayout() {
   const { loadingUnits } = useUnit()
   const { loadingUsers } = useUser()
   const { loadingWorkorders } = useWorkorder()
-  const isLoading = loadingAssets || loadingUnits || loadingWorkorders || loadingUsers || loadingCompanies
+  const isLoading =
+    loadingAssets ||
+    loadingUnits ||
+    loadingWorkorders ||
+    loadingUsers ||
+    loadingCompanies
 
   return (
     <>
-      {isLoading ? <Loader /> : 
+      {isLoading ? (
+        <Loader />
+      ) : (
         <LayoutContainer>
           <SideMenu />
           <BaseContainer>
@@ -27,7 +34,7 @@ export function DefaultLayout() {
             <Outlet />
           </BaseContainer>
         </LayoutContainer>
-      }
+      )}
     </>
   )
 }

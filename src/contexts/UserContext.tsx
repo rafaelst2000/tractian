@@ -1,6 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { User } from "../@types";
-
+import { createContext, ReactNode, useEffect, useState } from 'react'
+import { User } from '../@types'
 
 interface UserContextType {
   users: User[]
@@ -24,7 +23,7 @@ export function UserContextProvider({ children }: UserProviderProps) {
   async function loadUsers() {
     setLoadingUsers(true)
     const response = await fetch(`${baseUrl}/users`)
-    const data = await response.json() as User[]
+    const data = (await response.json()) as User[]
     setLoadingUsers(false)
 
     setUsers(data)
@@ -32,20 +31,20 @@ export function UserContextProvider({ children }: UserProviderProps) {
 
   async function editUser(user: User) {
     const response = await fetch(`${baseUrl}/users/${user.id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type" : "application/json"
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     })
     await response.json()
   }
 
   async function deleteUser(userId: number) {
     const response = await fetch(`${baseUrl}/users/${userId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type" : "application/json"
+        'Content-Type': 'application/json',
       },
     })
     await response.json()

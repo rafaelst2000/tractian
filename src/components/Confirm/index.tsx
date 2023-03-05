@@ -1,6 +1,6 @@
-import { Popconfirm } from 'antd';
-import { RemoveIcon } from './styles';
-import { useTheme } from 'styled-components';
+import { Popconfirm } from 'antd'
+import { RemoveIcon } from './styles'
+import { useTheme } from 'styled-components'
 
 interface ConfirmProps {
   title: string
@@ -22,7 +22,7 @@ export function Confirm({ title, onConfirm }: ConfirmProps) {
         onConfirm={handleConfirm}
         okText="Excluir"
         cancelText="Cancelar"
-        okButtonProps={{color: theme.red}}
+        okButtonProps={{ color: theme.red }}
       >
         <RemoveIcon size={24} />
       </Popconfirm>

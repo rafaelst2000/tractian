@@ -12,12 +12,10 @@ export const defaultTheme = {
 
   divider: '#DFE0EB',
   'divider-graph': '#EBEDF0',
-  
+
   blue: '#3751FF',
   'light-blue': '#DDE2FF',
   green: '#29CC97',
   yellow: '#FEC400',
   red: '#F12B2C',
-
-  
 } as const

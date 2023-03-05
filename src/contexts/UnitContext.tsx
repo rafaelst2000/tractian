@@ -1,6 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { Unit } from "../@types";
-
+import { createContext, ReactNode, useEffect, useState } from 'react'
+import { Unit } from '../@types'
 
 interface UnitContextType {
   units: Unit[]
@@ -25,7 +24,7 @@ export function UnitContextProvider({ children }: UnitProviderProps) {
   async function loadUnits() {
     setLoadingUnits(true)
     const response = await fetch(`${baseUrl}/units`)
-    const data = await response.json() as Unit[]
+    const data = (await response.json()) as Unit[]
     setLoadingUnits(false)
 
     setUnits(data)
@@ -33,28 +32,28 @@ export function UnitContextProvider({ children }: UnitProviderProps) {
 
   async function editUnit(unit: Unit) {
     const response = await fetch(`${baseUrl}/units/${unit.id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type" : "application/json"
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(unit)
+      body: JSON.stringify(unit),
     })
     await response.json()
   }
 
   async function deleteUnit(unitId: number) {
     const response = await fetch(`${baseUrl}/units/${unitId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type" : "application/json"
+        'Content-Type': 'application/json',
       },
     })
     await response.json()
   }
 
-  function getUnitNameById(id: number) { 
-    const index = units.findIndex(unit => unit.id === id)
-    if(index < 0) return ''
+  function getUnitNameById(id: number) {
+    const index = units.findIndex((unit) => unit.id === id)
+    if (index < 0) return ''
     return units[index].name
   }
 
@@ -63,7 +62,9 @@ export function UnitContextProvider({ children }: UnitProviderProps) {
   }, [])
 
   return (
-    <UnitContext.Provider value={{ units, editUnit, deleteUnit, getUnitNameById, loadingUnits }}>
+    <UnitContext.Provider
+      value={{ units, editUnit, deleteUnit, getUnitNameById, loadingUnits }}
+    >
       {children}
     </UnitContext.Provider>
   )

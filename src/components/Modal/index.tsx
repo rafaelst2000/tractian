@@ -1,9 +1,9 @@
-import { ReactNode, useState } from 'react';
-import { Modal as AntModal } from 'antd';
-import { EditIcon } from './styles';
-import { useTheme } from 'styled-components';
+import { ReactNode, useState } from 'react'
+import { Modal as AntModal } from 'antd'
+import { EditIcon } from './styles'
+import { useTheme } from 'styled-components'
 
-interface ModalProps{
+interface ModalProps {
   title: string
   children: ReactNode
   onOpenModal: () => void
@@ -11,7 +11,7 @@ interface ModalProps{
 }
 
 export function Modal({ title, children, onOpenModal, onConfirm }: ModalProps) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
   const theme = useTheme()
 
   function openModal() {
@@ -35,7 +35,7 @@ export function Modal({ title, children, onOpenModal, onConfirm }: ModalProps) {
         cancelText="Cancelar"
         onOk={handleConfirm}
         onCancel={() => setModalOpen(false)}
-        okButtonProps={{color: theme.blue}}
+        okButtonProps={{ color: theme.blue }}
       >
         {children}
       </AntModal>

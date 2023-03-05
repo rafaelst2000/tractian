@@ -14,9 +14,9 @@ type AssetSpecs = {
 
 export interface Asset {
   id: number
-  companyId: number,
-  healthHistory: AssetHealthHistory,
-  healthscore: number,
+  companyId: number
+  healthHistory: AssetHealthHistory
+  healthscore: number
   image: string
   metrics: AssetMetrics
   name: string

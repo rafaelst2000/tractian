@@ -1,17 +1,17 @@
-import { HeaderContainer, Separator,Profile } from "./styles";
+import { HeaderContainer, Separator, Profile } from './styles'
 import { MagnifyingGlass, Bell } from 'phosphor-react'
 import { useLocation } from 'react-router-dom'
 
 export function Header() {
   const routeNames = {
-    '/': "Home",
-    '/units': "Unidades",
-    '/users': "Usuários",
-    '/companies': "Empresas",
-    '/workorders': "Ordens de serviço",
-    '/assets': "Ativos"
+    '/': 'Home',
+    '/units': 'Unidades',
+    '/users': 'Usuários',
+    '/companies': 'Empresas',
+    '/workorders': 'Ordens de serviço',
+    '/assets': 'Ativos',
   }
-  const location = useLocation();
+  const location = useLocation()
   return (
     <HeaderContainer>
       <h1>{routeNames[location.pathname]}</h1>
@@ -21,7 +21,10 @@ export function Header() {
         <Separator />
         <h3>Rafael Trevisan</h3>
         <Profile>
-          <img src="https://avatars.githubusercontent.com/u/57990932?v=4" />
+          <img
+            src="https://avatars.githubusercontent.com/u/57990932?v=4"
+            alt=""
+          />
         </Profile>
       </div>
     </HeaderContainer>

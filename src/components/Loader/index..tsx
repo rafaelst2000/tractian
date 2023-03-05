@@ -1,4 +1,4 @@
-import { BaseLoader } from "./styles";
+import { BaseLoader } from './styles'
 
 export function Loader() {
   return (

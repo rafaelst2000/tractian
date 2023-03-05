@@ -14,9 +14,7 @@ export function AppProvider({ children }: AppProviderProps) {
       <CompanyContextProvider>
         <UnitContextProvider>
           <UserContextProvider>
-            <WorkorderContextProvider>
-              {children}
-            </WorkorderContextProvider>
+            <WorkorderContextProvider>{children}</WorkorderContextProvider>
           </UserContextProvider>
         </UnitContextProvider>
       </CompanyContextProvider>

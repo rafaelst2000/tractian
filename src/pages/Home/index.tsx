@@ -1,31 +1,38 @@
-import { Card } from "../../components/Card";
-import { WorkOrderCard } from "../../components/WorkOrderCard";
+import { Card } from '../../components/Card'
+import { WorkOrderCard } from '../../components/WorkOrderCard'
 
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 
-import { HomeContainer } from "./styles";
-import { LastAssetsCard } from "./components/LastAssetsCard";
-import { useAsset } from "../../hooks/useAsset";
-import { useCompany } from "../../hooks/useCompany";
-import { useUnit } from "../../hooks/useUnit";
-import { useUser } from "../../hooks/useUser";
-import { useWorkorder } from "../../hooks/useWorkorder";
+import { HomeContainer } from './styles'
+import { LastAssetsCard } from './components/LastAssetsCard'
+import { useAsset } from '../../hooks/useAsset'
+import { useCompany } from '../../hooks/useCompany'
+import { useUnit } from '../../hooks/useUnit'
+import { useUser } from '../../hooks/useUser'
+import { useWorkorder } from '../../hooks/useWorkorder'
 
 export function Home() {
-  const { assets, assetsTempAverage, assetsHealthScoreAverage, assetsUptimeAverage, assetsCollectsAverage, getCollectAverageByAsset } = useAsset()
+  const {
+    assets,
+    assetsTempAverage,
+    assetsHealthScoreAverage,
+    assetsUptimeAverage,
+    assetsCollectsAverage,
+    getCollectAverageByAsset,
+  } = useAsset()
   const { companies } = useCompany()
   const { units } = useUnit()
   const { users } = useUser()
   const { workorders } = useWorkorder()
-  
+
   const filteredWorkordersDesc = workorders.sort((a, b) => b.id - a.id)
   const lastWorkorder = filteredWorkordersDesc.slice(1)[0]
 
   const resumeCards = [
     {
       info: 'Ativos',
-      quantity: assets.length
+      quantity: assets.length,
     },
     {
       info: 'Empresas',
@@ -38,9 +45,9 @@ export function Home() {
     {
       info: 'Usuários',
       quantity: users.length,
-    }
+    },
   ]
-  
+
   const chartCards = [
     {
       info: 'Média de temperatura',
@@ -66,28 +73,29 @@ export function Home() {
 
   const chartOptions = {
     chart: {
-      type: 'spline'
+      type: 'spline',
     },
     title: {
-      text: 'Coleta x Tempo'
+      text: 'Coleta x Tempo',
     },
     xAxis: {
-      categories: assets.map(asset => asset.name)
+      categories: assets.map((asset) => asset.name),
     },
-    series: [{
-      type: 'column',
-      name: 'Coleta x Tempo',
-      colorByPoint: true,
-      data: assets.map(asset => getCollectAverageByAsset(asset)),
-      showInLegend: false
-    }]
+    series: [
+      {
+        type: 'column',
+        name: 'Coleta x Tempo',
+        colorByPoint: true,
+        data: assets.map((asset) => getCollectAverageByAsset(asset)),
+        showInLegend: false,
+      },
+    ],
   }
-
 
   return (
     <HomeContainer>
       <div className="resume-cards">
-        {resumeCards.map(card => {
+        {resumeCards.map((card) => {
           return (
             <Card key={card.info}>
               <p>{card.info}</p>
@@ -103,7 +111,7 @@ export function Home() {
             <HighchartsReact highcharts={Highcharts} options={chartOptions} />
           </div>
           <div>
-            {chartCards.map(card => {
+            {chartCards.map((card) => {
               return (
                 <div className="chart-container-card" key={card.info}>
                   <p>{card.info}</p>
@@ -114,10 +122,10 @@ export function Home() {
           </div>
         </div>
       </Card>
-      
+
       <div className="info-cards">
         <LastAssetsCard />
-        <WorkOrderCard isLastWorkOrder workorder={lastWorkorder}/>
+        <WorkOrderCard isLastWorkOrder workorder={lastWorkorder} />
       </div>
     </HomeContainer>
   )

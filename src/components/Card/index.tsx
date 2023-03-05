@@ -1,5 +1,4 @@
-
-import { ReactNode} from 'react'
+import { ReactNode } from 'react'
 import { CardContainer } from './styles'
 
 interface CardProps {
@@ -8,9 +7,5 @@ interface CardProps {
 }
 
 export function Card({ children, resetPadding = false }: CardProps) {
-  return(
-    <CardContainer resetPadding={resetPadding}>
-      {children}
-    </CardContainer>
-  )
+  return <CardContainer resetPadding={resetPadding}>{children}</CardContainer>
 }
