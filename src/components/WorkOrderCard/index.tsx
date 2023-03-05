@@ -3,6 +3,7 @@ import { LastWorkOrderCardContainer, Task, StyledCheckbox, Priority } from "./st
 import { Check } from 'phosphor-react'
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { Workorder } from "../../@types";
+import { Link } from "react-router-dom";
 
 interface WorkOrderCardProps {
   isLastWorkOrder?: boolean
@@ -16,7 +17,7 @@ export function WorkOrderCard({ isLastWorkOrder = false, workorder }: WorkOrderC
       <LastWorkOrderCardContainer>
         <div className="title-section">
           <h4>{isLastWorkOrder ? 'Última ordem de serviço' : workorder.title }</h4>
-          {isLastWorkOrder && <span>Ver todas</span>}
+          {isLastWorkOrder && <Link className="see-all" to={'/workorders'}>Ver todas</Link>}
         </div>
         <div className="description-section">
           <p>{isLastWorkOrder ? workorder.title : workorder.description}</p>

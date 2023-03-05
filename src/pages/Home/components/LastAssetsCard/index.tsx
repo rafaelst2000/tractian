@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card } from "../../../../components/Card";
 import { useAsset } from "../../../../hooks/useAsset";
 import { LastAssetsCardContainer, Task } from "./styles";
@@ -13,7 +14,7 @@ export function LastAssetsCard() {
       <LastAssetsCardContainer>
         <div className="title-section">
           <h4>Últimos ativos</h4>
-          <span>Ver todos</span>
+          <Link className="see-all" to={'/assets'}>Ver todos</Link>
         </div>
         <div className="description-section">
           <p>Ativos cadastrados na plataforma recentemente</p>

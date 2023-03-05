@@ -14,11 +14,17 @@ export const LastWorkOrderCardContainer = styled.div`
       color: ${props => props.theme.black};
     }
 
-    span {
+    .see-all {
       font-size: 0.875rem;
       font-weight: 600;
       color: ${props => props.theme.blue};
       cursor: pointer;
+      text-decoration: none;
+
+      &:hover {
+        color: ${props => props.theme["side-menu-item-active"]};
+        transition: 0.2s;
+      }
     }
   }
 

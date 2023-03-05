@@ -22,5 +22,5 @@ export interface Asset {
   name: string
   sensors: [String]
   specifications: AssetSpecs
-  status: string
+  status: 'inAlert' | 'inDowntime' | 'inOperation'
 }
