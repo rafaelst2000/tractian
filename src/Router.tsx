@@ -6,6 +6,7 @@ import { Units } from './pages/Units'
 import { Companies } from './pages/Companies'
 import { Users } from './pages/Users'
 import { Workorders } from './pages/Workorders'
+import { Assets } from './pages/Assets'
 
 export function Router() {
   return (
@@ -16,6 +17,7 @@ export function Router() {
         <Route path="/companies" element={<Companies />} />
         <Route path="/users" element={<Users />} />
         <Route path="/workorders" element={<Workorders />} />
+        <Route path="/assets" element={<Assets />} />
       </Route>
     </Routes>
   )

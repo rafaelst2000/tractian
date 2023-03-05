@@ -8,6 +8,7 @@ interface AssetContextType {
   assetsHealthScoreAverage: number
   assetsUptimeAverage: number
   assetsCollectsAverage: number
+  loadingAssets: boolean
   getCollectAverageByAsset: (asserts: Asset) => number
 }
 
@@ -21,15 +22,17 @@ const baseUrl = 'https://my-json-server.typicode.com/tractian/fake-api'
 
 export function AssetContextProvider({ children }: AssetProviderProps) {
   const [assets, setAssets] = useState<Asset[]>([])
+  const [loadingAssets, setLoadingAssets] = useState(false)
   const assetsTempAverage = getAssetsTempAverage()
   const assetsHealthScoreAverage = getAssetsHealthScoreAverage()
   const assetsUptimeAverage = getAssetsUptimeAverage()
   const assetsCollectsAverage = getAssetsCollectsAverage()
 
   async function loadAssets() {
+    setLoadingAssets(true)
     const response = await fetch(`${baseUrl}/assets`)
     const data = await response.json() as Asset[]
-
+    setLoadingAssets(false)
     setAssets(data)
   }
 
@@ -84,7 +87,8 @@ export function AssetContextProvider({ children }: AssetProviderProps) {
         assetsHealthScoreAverage, 
         assetsUptimeAverage, 
         assetsCollectsAverage, 
-        getCollectAverageByAsset 
+        getCollectAverageByAsset, 
+        loadingAssets
       }}>
         {children}
     </AssetContext.Provider>

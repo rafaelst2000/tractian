@@ -3,6 +3,7 @@ import { Company } from "../@types";
 
 interface CompanyContextType {
   companies: Company[]
+  loadingCompanies: boolean
   getCompanyNameById: (companyId: number) => string
   editCompany: (company: Company) => void
   deleteCompany: (companyId: number) => void
@@ -18,10 +19,13 @@ const baseUrl = 'https://my-json-server.typicode.com/tractian/fake-api'
 
 export function CompanyContextProvider({ children }: CompanyProviderProps) {
   const [companies, setCompanies] = useState<Company[]>([])
+  const [loadingCompanies, setLoadingCompanies] = useState(false)
 
   async function loadCompanies() {
+    setLoadingCompanies(true)
     const response = await fetch(`${baseUrl}/companies`)
     const data = await response.json() as Company[]
+    setLoadingCompanies(false)
 
     setCompanies(data)
   }
@@ -58,7 +62,7 @@ export function CompanyContextProvider({ children }: CompanyProviderProps) {
   }, [])
 
   return (
-    <CompanyContext.Provider value={{ companies, getCompanyNameById, editCompany, deleteCompany }}>
+    <CompanyContext.Provider value={{ companies, getCompanyNameById, editCompany, deleteCompany, loadingCompanies }}>
       {children}
     </CompanyContext.Provider>
   )

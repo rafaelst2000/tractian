@@ -4,6 +4,7 @@ import { Unit } from "../@types";
 
 interface UnitContextType {
   units: Unit[]
+  loadingUnits: boolean
   editUnit: (unit: Unit) => void
   deleteUnit: (unitId: number) => void
   getUnitNameById: (unitId: number) => void
@@ -19,10 +20,13 @@ const baseUrl = 'https://my-json-server.typicode.com/tractian/fake-api'
 
 export function UnitContextProvider({ children }: UnitProviderProps) {
   const [units, setUnits] = useState<Unit[]>([])
+  const [loadingUnits, setLoadingUnits] = useState(false)
 
   async function loadUnits() {
+    setLoadingUnits(true)
     const response = await fetch(`${baseUrl}/units`)
     const data = await response.json() as Unit[]
+    setLoadingUnits(false)
 
     setUnits(data)
   }
@@ -59,7 +63,7 @@ export function UnitContextProvider({ children }: UnitProviderProps) {
   }, [])
 
   return (
-    <UnitContext.Provider value={{ units, editUnit, deleteUnit, getUnitNameById }}>
+    <UnitContext.Provider value={{ units, editUnit, deleteUnit, getUnitNameById, loadingUnits }}>
       {children}
     </UnitContext.Provider>
   )
