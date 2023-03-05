@@ -3,18 +3,31 @@ import { MagnifyingGlass, Bell } from 'phosphor-react'
 import { useLocation } from 'react-router-dom'
 
 export function Header() {
-  const routeNames = {
-    '/': 'Home',
-    '/units': 'Unidades',
-    '/users': 'Usuários',
-    '/companies': 'Empresas',
-    '/workorders': 'Ordens de serviço',
-    '/assets': 'Ativos',
+  const getRouteName = () => {
+    const path = location.pathname
+
+    switch (path) {
+      case '/':
+        return 'Home'
+      case '/units':
+        return 'Unidades'
+      case '/users':
+        return 'Usuários'
+      case '/companies':
+        return 'Empresas'
+      case '/workorders':
+        return 'Ordens de serviço'
+      case '/assets':
+        return 'Ativos'
+      default:
+        return ''
+    }
   }
+
   const location = useLocation()
   return (
     <HeaderContainer>
-      <h1>{routeNames[location.pathname]}</h1>
+      <h1>{getRouteName()}</h1>
       <div>
         <MagnifyingGlass size={24} />
         <Bell size={24} />
