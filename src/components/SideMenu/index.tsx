@@ -15,9 +15,14 @@ export function SideMenu() {
           Home
         </NavItem>
 
-        <NavItem to={'/units'}>
-          <Lightbulb size={16}/>
-          Unidades
+        <NavItem to={'/assets'}>
+          <Nut size={16}/>
+          Ativos
+        </NavItem>
+
+        <NavItem to={'/workorders'}>
+          <ListChecks size={16}/>
+          Ordens de serviço
         </NavItem>
 
         <NavItem to={'/users'}>
@@ -30,14 +35,9 @@ export function SideMenu() {
           Empresas
         </NavItem>
 
-        <NavItem to={'/assets'}>
-          <Nut size={16}/>
-          Ativos
-        </NavItem>
-
-        <NavItem to={'/workorders'}>
-          <ListChecks size={16}/>
-          Ordens de serviço
+        <NavItem to={'/units'}>
+          <Lightbulb size={16}/>
+          Unidades
         </NavItem>
 
         <Separator />
